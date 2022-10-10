@@ -6,7 +6,7 @@
 /*   By: Karrar <kahamza@student.42wolfsburg.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:22:24 by Karrar            #+#    #+#             */
-/*   Updated: 2022/10/09 23:42:56 by Karrar           ###   ########.fr       */
+/*   Updated: 2022/10/10 09:39:48 by Karrar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,28 @@
 int	ft_find_mod(const int *values)
 {
 	int	mod;
+	int	tmp[3];
+	int	i;
 
-	mod = 0;
-	if (values[0] % 2 == values[1] % 2)
+	i = 0;
+	while (i < 3)
 	{
-		mod = values[0] % 2;
+		if (values[i] < 0)
+		{
+			tmp[i] = values[i] * -1;
+		}
+		else
+		{
+			tmp[i] = values[i];
+		}
+		i++;
 	}
-	else if (values[0] % 2 == values[2] % 2)
-	{
-		mod = values[0] % 2;
-	}
-	else if (values[1] % 2 == values[2] % 2)
-	{
-		mod = values[1] % 2;
-	}
-	if (mod < 0)
-	{
-		mod *= -1;
-	}
+	if (tmp[0] % 2 == tmp[1] % 2)
+		mod = tmp[0] % 2;
+	else if (tmp[0] % 2 == tmp[2] % 2)
+		mod = tmp[0] % 2;
+	else if (tmp[1] % 2 == tmp[2] % 2)
+		mod = tmp[1] % 2;
 	return (mod);
 }
 
